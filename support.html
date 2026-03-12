@@ -1,512 +1,588 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support – Space Explorer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --coral: #FF6B6B;
-      --coral-light: #FF8E8E;
-      --teal: #4ECDC4;
-      --teal-dark: #3BA99C;
-      --yellow: #FFE66D;
-      --yellow-warm: #FFD93D;
-      --navy: #2C3E6B;
-      --navy-light: #3D5089;
-      --cream: #FFF9F0;
-      --sand: #FFF3E0;
-      --text: #3A3A5C;
-      --text-light: #6B6B8D;
-      --white: #FFFFFF;
-      --shadow: rgba(44, 62, 107, 0.08);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support and help for Space Explorer - An interactive educational space exploration app for kids">
+    <title>Space Explorer - Support & Help</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--text);
-      line-height: 1.7;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
 
-    body::before,
-    body::after {
-      content: '';
-      position: fixed;
-      border-radius: 50%;
-      z-index: 0;
-      opacity: 0.08;
-      pointer-events: none;
-    }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
 
-    body::before {
-      width: 500px;
-      height: 500px;
-      background: var(--teal);
-      top: -150px;
-      right: -100px;
-    }
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
 
-    body::after {
-      width: 400px;
-      height: 400px;
-      background: var(--coral);
-      bottom: -100px;
-      left: -80px;
-    }
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
 
-    .wrapper {
-      position: relative;
-      z-index: 1;
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 40px 24px 60px;
-    }
+        .content {
+            padding: 40px 30px;
+        }
 
-    /* Header */
-    .header {
-      text-align: center;
-      margin-bottom: 48px;
-      animation: fadeDown 0.6s ease-out;
-    }
+        .section {
+            margin-bottom: 40px;
+        }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: linear-gradient(135deg, var(--coral), var(--coral-light));
-      color: var(--white);
-      font-family: 'Baloo 2', cursive;
-      font-size: 0.85rem;
-      font-weight: 700;
-      padding: 6px 18px;
-      border-radius: 50px;
-      margin-bottom: 20px;
-      letter-spacing: 0.5px;
-      box-shadow: 0 4px 16px rgba(255, 107, 107, 0.3);
-    }
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .badge::before {
-      content: '🧩';
-      font-size: 1rem;
-    }
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
 
-    .header h1 {
-      font-family: 'Baloo 2', cursive;
-      font-size: clamp(2rem, 5vw, 2.8rem);
-      font-weight: 800;
-      color: var(--navy);
-      margin-bottom: 8px;
-      line-height: 1.2;
-    }
+        .section p, .section li {
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
 
-    .header p {
-      color: var(--text-light);
-      font-size: 1.05rem;
-      font-style: italic;
-    }
+        .section ul, .section ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
 
-    .divider {
-      width: 80px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--coral), var(--yellow-warm), var(--teal));
-      border-radius: 4px;
-      margin: 24px auto 0;
-    }
+        .faq-item {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
 
-    /* FAQ */
-    .faq-heading {
-      font-family: 'Baloo 2', cursive;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      animation: fadeUp 0.6s ease-out 0.1s both;
-    }
+        .faq-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
 
-    .faq-heading span {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 230, 109, 0.25);
-      border-radius: 12px;
-      font-size: 1.2rem;
-    }
+        .faq-item h3 {
+            color: #667eea;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
 
-    .faq-item {
-      background: var(--white);
-      border-radius: 20px;
-      margin-bottom: 14px;
-      box-shadow: 0 2px 20px var(--shadow);
-      overflow: hidden;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
 
-    .faq-item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 30px rgba(44, 62, 107, 0.12);
-    }
+        .feature-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
 
-    .faq-item:nth-child(2) { animation: fadeUp 0.6s ease-out 0.15s both; }
-    .faq-item:nth-child(3) { animation: fadeUp 0.6s ease-out 0.2s both; }
-    .faq-item:nth-child(4) { animation: fadeUp 0.6s ease-out 0.25s both; }
-    .faq-item:nth-child(5) { animation: fadeUp 0.6s ease-out 0.3s both; }
-    .faq-item:nth-child(6) { animation: fadeUp 0.6s ease-out 0.35s both; }
-    .faq-item:nth-child(7) { animation: fadeUp 0.6s ease-out 0.4s both; }
-    .faq-item:nth-child(8) { animation: fadeUp 0.6s ease-out 0.45s both; }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
 
-    .faq-question {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 22px 28px;
-      font-family: 'Baloo 2', cursive;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--navy);
-      text-align: left;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      transition: background 0.2s ease;
-      line-height: 1.4;
-    }
+        .feature-card .emoji {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
 
-    .faq-question:hover {
-      background: rgba(78, 205, 196, 0.04);
-    }
+        .feature-card h3 {
+            color: #764ba2;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
 
-    .faq-question .icon {
-      flex-shrink: 0;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(78, 205, 196, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.35s ease, background 0.35s ease;
-    }
+        .contact-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+        }
 
-    .faq-question .icon svg {
-      width: 16px;
-      height: 16px;
-      stroke: var(--teal-dark);
-      stroke-width: 2.5;
-      fill: none;
-      transition: stroke 0.35s ease;
-    }
+        .contact-box h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
 
-    .faq-item.open .faq-question .icon {
-      transform: rotate(45deg);
-      background: rgba(255, 107, 107, 0.12);
-    }
+        .contact-box a {
+            color: white;
+            text-decoration: underline;
+            font-weight: bold;
+        }
 
-    .faq-item.open .faq-question .icon svg {
-      stroke: var(--coral);
-    }
+        .requirements {
+            background: #e3f2fd;
+            border: 2px solid #2196f3;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
 
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.4s ease;
-    }
+        .requirements h3 {
+            color: #1976d2;
+            margin-top: 0;
+        }
 
-    .faq-answer-inner {
-      padding: 0 28px 22px;
-      color: var(--text-light);
-      font-size: 0.98rem;
-      line-height: 1.75;
-    }
+        .badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
 
-    .faq-item.open .faq-answer {
-      max-height: 300px;
-    }
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
 
-    /* Accent tag on some answers */
-    .tag {
-      display: inline-block;
-      font-family: 'Baloo 2', cursive;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 2px 10px;
-      border-radius: 6px;
-      margin-bottom: 6px;
-    }
+        .tip {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
 
-    .tag--green {
-      background: rgba(78, 205, 196, 0.12);
-      color: var(--teal-dark);
-    }
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.95em;
+        }
 
-    .tag--coral {
-      background: rgba(255, 107, 107, 0.12);
-      color: var(--coral);
-    }
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
 
-    /* Still need help card */
-    .help-card {
-      background: linear-gradient(135deg, var(--navy), var(--navy-light));
-      color: var(--white);
-      border-radius: 20px;
-      padding: 32px;
-      margin-top: 32px;
-      box-shadow: 0 8px 32px rgba(44, 62, 107, 0.2);
-      text-align: center;
-      animation: fadeUp 0.6s ease-out 0.5s both;
-    }
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
 
-    .help-card h2 {
-      font-family: 'Baloo 2', cursive;
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: var(--white);
-    }
+            header h1 {
+                font-size: 1.8em;
+            }
 
-    .help-card p {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.98rem;
-      margin-bottom: 20px;
-    }
+            .content {
+                padding: 25px 20px;
+            }
 
-    .email-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      color: var(--white);
-      text-decoration: none;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: background 0.25s ease;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
+            .section h2 {
+                font-size: 1.5em;
+            }
 
-    .email-link:hover {
-      background: rgba(255, 255, 255, 0.25);
-    }
-
-    .email-link::before {
-      content: '✉️';
-    }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      padding-top: 28px;
-      animation: fadeUp 0.6s ease-out 0.55s both;
-    }
-
-    .footer .dots {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .footer .dots span {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
-
-    .footer .dots span:nth-child(1) { background: var(--coral); }
-    .footer .dots span:nth-child(2) { background: var(--yellow-warm); }
-    .footer .dots span:nth-child(3) { background: var(--teal); }
-
-    .footer a {
-      color: var(--teal-dark);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: color 0.2s ease;
-    }
-
-    .footer a:hover {
-      color: var(--coral);
-    }
-
-    /* Animations */
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Mobile */
-    @media (max-width: 600px) {
-      .wrapper {
-        padding: 28px 16px 48px;
-      }
-
-      .faq-question {
-        padding: 18px 20px;
-        font-size: 1rem;
-      }
-
-      .faq-answer-inner {
-        padding: 0 20px 18px;
-      }
-
-      .help-card {
-        padding: 24px 20px;
-        border-radius: 16px;
-      }
-
-      .faq-item {
-        border-radius: 16px;
-      }
-    }
-  </style>
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="wrapper">
-    <header class="header">
-      <div class="badge">Space Explorer</div>
-      <h1>Support</h1>
-      <p>Got questions? We've got answers!</p>
-      <div class="divider"></div>
-    </header>
+    <div class="container">
+        <header>
+            <h1>🚀 Space Explorer Support</h1>
+            <p>Help & Resources for Young Space Explorers</p>
+        </header>
 
-    <h2 class="faq-heading"><span>💡</span> Frequently Asked Questions</h2>
+        <div class="content">
+            <!-- App Overview -->
+            <section class="section">
+                <h2>🌟 Welcome to Space Explorer!</h2>
+                <p>Space Explorer is an interactive educational app designed for children ages 6-12 to explore the wonders of space. Learn about Earth's atmosphere, discover amazing planets, and venture into deep space—all while earning stars, unlocking achievements, and having fun!</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="emoji">🌍</div>
+                        <h3>Earth's Atmosphere</h3>
+                        <p>Explore 5 amazing atmospheric layers</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="emoji">🪐</div>
+                        <h3>Planets</h3>
+                        <p>Discover 8 incredible worlds</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="emoji">⭐</div>
+                        <h3>Deep Space</h3>
+                        <p>Learn about stars and galaxies</p>
+                    </div>
+                </div>
+            </section>
 
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          What is Space Explorer?
-          <span class="icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            <span class="tag tag--green">About the App</span><br>
-            Space Explorer is an interactive educational app for young space explorers to learn about Earth's atmosphere, planets, and deep space!
-          </div>
+            <!-- Getting Started -->
+            <section class="section">
+                <h2>🎯 Getting Started</h2>
+                
+                <h3>Creating Your Profile</h3>
+                <ol>
+                    <li><strong>Open the App</strong> - You'll see a welcome screen when you first launch Space Explorer</li>
+                    <li><strong>Choose "Create New Profile"</strong> - Tap this option to set up your space explorer account</li>
+                    <li><strong>Enter Your Name</strong> - Type in your name so the app can personalize your experience</li>
+                    <li><strong>Select an Avatar</strong> - Choose a fun space-themed avatar that represents you</li>
+                    <li><strong>Enter Your Age</strong> - This helps customize content appropriate for you</li>
+                    <li><strong>Start Exploring!</strong> - You're all set to begin your space adventure</li>
+                </ol>
+
+                <div class="tip">
+                    <strong>💡 Tip:</strong> Multiple family members can create their own profiles! Each profile tracks progress separately, so everyone can enjoy their own space journey.
+                </div>
+
+                <h3>Navigating the App</h3>
+                <p>Space Explorer has three main sections accessible from the bottom tab bar:</p>
+                <ul>
+                    <li><strong>🔭 Explore</strong> - The main hub where you choose what to learn about (Atmosphere, Planets, or Deep Space)</li>
+                    <li><strong>🎮 Game</strong> - Test your knowledge with interactive quizzes</li>
+                    <li><strong>🏆 Rewards</strong> - View your stars, achievements, and progress</li>
+                </ul>
+            </section>
+
+            <!-- Features -->
+            <section class="section">
+                <h2>✨ Key Features</h2>
+
+                <h3>🗣️ Audio Narration</h3>
+                <p>Space Explorer includes friendly voice narration throughout the app to help guide your learning. The narration reads important information aloud, making it perfect for younger learners or those who prefer listening to reading.</p>
+                
+                <div class="tip">
+                    <strong>💡 Tip:</strong> Make sure your device volume is turned up to hear the narration!
+                </div>
+
+                <h3>⭐ Star System & Achievements</h3>
+                <p>As you explore and complete activities, you'll earn stars! Collect stars to unlock achievement tiers:</p>
+                <ul>
+                    <li><strong>🥉 Bronze</strong> - 5-9 stars: Good progress!</li>
+                    <li><strong>🥈 Silver</strong> - 10-14 stars: Great work!</li>
+                    <li><strong>🥇 Gold</strong> - 15-19 stars: Excellent!</li>
+                    <li><strong>💎 Platinum</strong> - 20+ stars: Master Explorer!</li>
+                </ul>
+
+                <h3>👤 Multi-Profile Support</h3>
+                <p>Create separate profiles for each child in your family. Each profile maintains its own:</p>
+                <ul>
+                    <li>Progress tracking</li>
+                    <li>Star count and achievements</li>
+                    <li>Quiz scores</li>
+                    <li>Activity completion status</li>
+                </ul>
+
+                <h3>🎬 Beautiful Animations</h3>
+                <p>Enjoy stunning animations and visual effects as you explore space, including rotating planets, twinkling stars, and animated astronauts!</p>
+            </section>
+
+            <!-- FAQ -->
+            <section class="section">
+                <h2>❓ Frequently Asked Questions</h2>
+
+                <div class="faq-item">
+                    <h3>How do I switch between profiles?</h3>
+                    <p>To switch profiles, go to the Profile Selection screen from the main menu. You can select a different existing profile or create a new one.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How do I earn stars?</h3>
+                    <p>You earn stars by:</p>
+                    <ul>
+                        <li>Completing exploration activities</li>
+                        <li>Taking quizzes and answering questions correctly</li>
+                        <li>Finishing learning modules</li>
+                        <li>Exploring all sections of a topic</li>
+                    </ul>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Can I turn off the audio narration?</h3>
+                    <p>Currently, audio narration plays automatically at key moments. You can lower your device volume or mute your device if you prefer to read silently.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Is my progress saved automatically?</h3>
+                    <p>Yes! Your progress, stars, quiz scores, and achievements are automatically saved to your profile. You can close the app and return anytime to pick up where you left off.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What age is this app appropriate for?</h3>
+                    <p>Space Explorer is designed for children ages 6-12 years old, but curious learners of any age can enjoy exploring space!</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Do I need an internet connection?</h3>
+                    <p>No! Once Space Explorer is installed on your device, all content is available offline. No internet connection is required to explore, learn, and play.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How do I delete a profile?</h3>
+                    <p>Currently, profile deletion must be done through the app's settings. Navigate to Profile Management and select the profile you wish to remove, then tap "Delete Profile."</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>The app isn't working correctly. What should I do?</h3>
+                    <p>Try these troubleshooting steps:</p>
+                    <ol>
+                        <li>Close the app completely and reopen it</li>
+                        <li>Restart your device</li>
+                        <li>Make sure you have the latest version of the app installed</li>
+                        <li>Check that your device meets the minimum requirements (see below)</li>
+                        <li>If problems persist, contact support (see Contact section)</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- System Requirements -->
+            <section class="section">
+                <h2>📱 System Requirements</h2>
+                
+                <div class="requirements">
+                    <h3>Compatible Devices</h3>
+                    <p><span class="badge">iPhone</span> <span class="badge">iPad</span></p>
+                    <ul>
+                        <li><strong>iOS Version:</strong> iOS 15.0 or later</li>
+                        <li><strong>iPhone:</strong> iPhone SE (2nd generation) and later</li>
+                        <li><strong>iPad:</strong> iPad (5th generation) and later, all iPad Air, iPad Pro, and iPad mini models</li>
+                        <li><strong>Storage:</strong> Approximately 150 MB of free space</li>
+                        <li><strong>Languages:</strong> English</li>
+                    </ul>
+                </div>
+
+                <div class="warning">
+                    <strong>⚠️ Note:</strong> Older devices may experience slower animations or performance issues. For the best experience, we recommend iOS 16 or later on devices from the last 4 years.
+                </div>
+            </section>
+
+            <!-- Privacy & Safety -->
+            <section class="section">
+                <h2>🔒 Privacy & Safety</h2>
+                
+                <h3>Your Data is Safe</h3>
+                <p>Space Explorer is committed to protecting children's privacy:</p>
+                <ul>
+                    <li><strong>No Personal Data Collection:</strong> We do not collect or transmit any personal information</li>
+                    <li><strong>Offline Operation:</strong> All data stays on your device</li>
+                    <li><strong>No Ads:</strong> Space Explorer contains no advertisements</li>
+                    <li><strong>No In-App Purchases:</strong> All content is included with the app</li>
+                    <li><strong>No External Links:</strong> The app does not link to websites or external content</li>
+                    <li><strong>No Social Features:</strong> No chat, messaging, or user-to-user communication</li>
+                </ul>
+
+                <h3>Kid-Safe Design</h3>
+                <p>Space Explorer is designed specifically for children with:</p>
+                <ul>
+                    <li>Age-appropriate content and language</li>
+                    <li>Positive reinforcement and encouragement</li>
+                    <li>Safe, controlled learning environment</li>
+                    <li>No external distractions or links</li>
+                </ul>
+            </section>
+
+            <!-- Tips for Parents -->
+            <section class="section">
+                <h2>👨‍👩‍👧‍👦 Tips for Parents & Educators</h2>
+
+                <h3>Maximizing Learning</h3>
+                <ul>
+                    <li><strong>Explore Together:</strong> Sit with your child as they explore to discuss what they're learning</li>
+                    <li><strong>Ask Questions:</strong> Encourage critical thinking by asking about what they've discovered</li>
+                    <li><strong>Set Goals:</strong> Help them set achievement goals (e.g., "Let's reach Silver tier this week!")</li>
+                    <li><strong>Review Progress:</strong> Check the Rewards tab together to celebrate accomplishments</li>
+                    <li><strong>Encourage Repetition:</strong> Revisiting topics helps reinforce learning</li>
+                </ul>
+
+                <h3>Educational Benefits</h3>
+                <p>Space Explorer supports learning in multiple ways:</p>
+                <ul>
+                    <li><strong>Visual Learning:</strong> Beautiful animations and graphics</li>
+                    <li><strong>Auditory Learning:</strong> Voice narration and audio feedback</li>
+                    <li><strong>Kinesthetic Learning:</strong> Interactive touch-based activities</li>
+                    <li><strong>Self-Paced:</strong> Children can learn at their own speed</li>
+                    <li><strong>Gamification:</strong> Motivates continued engagement and learning</li>
+                </ul>
+
+                <h3>Screen Time Recommendations</h3>
+                <div class="tip">
+                    <strong>💡 Tip:</strong> We recommend 15-30 minute sessions for optimal learning and to prevent screen fatigue. The app's gamification system naturally encourages taking breaks after completing sections.
+                </div>
+            </section>
+
+            <!-- Troubleshooting -->
+            <section class="section">
+                <h2>🔧 Troubleshooting</h2>
+
+                <h3>Common Issues</h3>
+
+                <div class="faq-item">
+                    <h3>Audio isn't playing</h3>
+                    <p><strong>Solutions:</strong></p>
+                    <ul>
+                        <li>Check that your device isn't muted (check the side switch on iPhones)</li>
+                        <li>Increase the volume using the volume buttons</li>
+                        <li>Close other apps that might be using audio</li>
+                        <li>Restart the app</li>
+                    </ul>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Animations are slow or choppy</h3>
+                    <p><strong>Solutions:</strong></p>
+                    <ul>
+                        <li>Close other apps running in the background</li>
+                        <li>Restart your device to free up memory</li>
+                        <li>Check that your device meets minimum requirements</li>
+                        <li>Update to the latest iOS version</li>
+                    </ul>
+                </div>
+
+                <div class="faq-item">
+                    <h3>App crashes or freezes</h3>
+                    <p><strong>Solutions:</strong></p>
+                    <ul>
+                        <li>Force quit the app and relaunch it</li>
+                        <li>Restart your device</li>
+                        <li>Check for app updates in the App Store</li>
+                        <li>Ensure you have at least 500 MB of free storage space</li>
+                        <li>If problems continue, try deleting and reinstalling the app (note: this will erase all profiles and progress)</li>
+                    </ul>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Progress was lost</h3>
+                    <p><strong>Important:</strong> Progress is saved locally on your device. It can be lost if:</p>
+                    <ul>
+                        <li>The app is deleted and reinstalled</li>
+                        <li>Your device is reset to factory settings</li>
+                        <li>iOS data is cleared</li>
+                    </ul>
+                    <p>Unfortunately, progress cannot be recovered once lost. We recommend creating a device backup regularly to protect all your app data.</p>
+                </div>
+            </section>
+
+            <!-- Feedback & Contact -->
+            <section class="section">
+                <h2>📧 Contact & Support</h2>
+                <p>We'd love to hear from you! Whether you have questions, feedback, or need technical support, please reach out:</p>
+
+                <div class="contact-box">
+                    <h3>Get in Touch</h3>
+                    <p><strong>Email:</strong> <a href="mailto:support@spacefunapp.com">support@spacefunapp.com</a></p>
+                    <p><strong>Bug Reports:</strong> <a href="https://github.com/yourusername/space-fun/issues" target="_blank">GitHub Issues</a></p>
+                    <p><strong>Feedback:</strong> <a href="https://github.com/yourusername/space-fun/discussions" target="_blank">GitHub Discussions</a></p>
+                    <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.9;">We typically respond within 24-48 hours</p>
+                </div>
+
+                <h3>We Want Your Feedback!</h3>
+                <p>Help us make Space Explorer even better:</p>
+                <ul>
+                    <li>🌟 Rate us on the App Store</li>
+                    <li>💬 Share your suggestions for new features</li>
+                    <li>📝 Report any bugs or issues you encounter</li>
+                    <li>🎓 Tell us how Space Explorer has helped your learning</li>
+                </ul>
+            </section>
+
+            <!-- Updates -->
+            <section class="section">
+                <h2>🚀 Future Updates</h2>
+                <p>We're constantly working to improve Space Explorer! Here's what we're planning:</p>
+                
+                <h3>Coming Soon</h3>
+                <ul>
+                    <li>🌍 Multi-language support</li>
+                    <li>☁️ iCloud sync for progress across devices</li>
+                    <li>🎥 Video content and animations</li>
+                    <li>🎮 More interactive mini-games</li>
+                    <li>🏅 Additional achievement types</li>
+                    <li>🔊 Custom voice selection for narration</li>
+                    <li>📊 Parent dashboard for tracking progress</li>
+                </ul>
+
+                <div class="tip">
+                    <strong>💡 Stay Updated:</strong> Enable automatic updates in the App Store to always have the latest features!
+                </div>
+            </section>
+
+            <!-- Credits -->
+            <section class="section">
+                <h2>👏 Credits & Acknowledgments</h2>
+                <p><strong>Developer:</strong> Margi Patel</p>
+                <p><strong>Version:</strong> 1.0</p>
+                <p><strong>Release Date:</strong> February 2026</p>
+                
+                <h3>Special Thanks</h3>
+                <ul>
+                    <li><strong>Lottie by Airbnb</strong> - Animation framework</li>
+                    <li><strong>NASA</strong> - Space imagery and educational content inspiration</li>
+                    <li><strong>Apple</strong> - SwiftUI framework and development tools</li>
+                    <li><strong>Educators & Parents</strong> - For feedback and support</li>
+                </ul>
+            </section>
         </div>
-      </div>
 
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          Is Space Explorer free to use?
-          <span class="icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Yes! Space Explorer is completely free to download and play. There are no in-app purchases or hidden fees.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          Does Space Explorer collect any personal data?
-          <span class="icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            <span class="tag tag--coral">Privacy</span><br>
-            No. Space Explorer does not collect, store, or share any personal data whatsoever. No accounts, no tracking, no ads — just a safe learning experience.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          What age group is Space Explorer designed for?
-          <span class="icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            Space Explorer is designed for children of all ages, though it's especially great for kids in elementary and middle school who are space lovers and explorers.
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          Does the app require an internet connection?
-          <span class="icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            No internet connection is needed to play Space Explorer. Once downloaded, the app works completely offline — perfect for road trips and screen-time on the go!
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          I found a bug. How do I report it?
-          <span class="icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
-        </button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">
-            We'd love to hear from you! Please send an email to <strong>margibpatel@gmail.com</strong> with a description of the issue and the device you're using. We'll look into it as soon as possible.
-          </div>
-        </div>
-      </div>
+        <footer>
+            <p>🚀 Space Explorer - Educational Space Exploration App</p>
+            <p>Built with ❤️ for young space explorers everywhere</p>
+            <p style="margin-top: 15px;">
+                <a href="#top">Back to Top</a> | 
+                <a href="mailto:support@spacefunapp.com">Contact Support</a> | 
+                <a href="privacy.html">Privacy Policy</a>
+            </p>
+            <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.8;">
+                © 2026 Space Explorer. All rights reserved. | Licensed under MIT License
+            </p>
+        </footer>
     </div>
-
-    <div class="help-card">
-      <h2>Still Need Help? 🤝</h2>
-      <p>Can't find what you're looking for? Drop us a line and we'll get back to you.</p>
-      <a href="mailto:margibpatel@gmail.com" class="email-link">margibpatel@gmail.com</a>
-    </div>
-
-    <footer class="footer">
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <a href="index.html">Privacy Policy</a>
-    </footer>
-  </div>
-
-  <script>
-    document.querySelectorAll('.faq-question').forEach(button => {
-      button.addEventListener('click', () => {
-        const item = button.parentElement;
-        const isOpen = item.classList.contains('open');
-
-        // Close all other items
-        document.querySelectorAll('.faq-item.open').forEach(openItem => {
-          openItem.classList.remove('open');
-          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-        });
-
-        // Toggle clicked item
-        if (!isOpen) {
-          item.classList.add('open');
-          button.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
-  </script>
 </body>
 </html>
